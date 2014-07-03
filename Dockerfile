@@ -1,40 +1,45 @@
-FROM ubuntu:precise
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y python-software-properties python g++ make redis-server libicu-dev libexpat1
-RUN add-apt-repository ppa:chris-lea/node.js
-RUN apt-get update
-RUN apt-get install -y nodejs
-RUN apt-get install -y git
-RUN apt-get install -y vim
-RUN apt-get install -y naturaldocs
-RUN npm install -g roots
-RUN git config --global user.name "Michiel de Jong"
-RUN git config --global user.email "michiel@unhosted.org"
-RUN git config --global push.default current
-RUN apt-get install -y wget
-RUN apt-get install -y build-essential
-RUN apt-get install -y curl
-RUN apt-get install -y git-core
-RUN apt-get install -y libcurl4-openssl-dev
-RUN apt-get install -y libreadline-dev
-RUN apt-get install -y libssl-dev
-#RUN apt-get install -y libxml2-dev
-#RUN apt-get install -y libxslt1-dev
-RUN apt-get install -y libyaml-dev
-RUN apt-get install -y zlib1g-dev
-RUN wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
-RUN tar -xzf ruby-2.1.2.tar.gz
-RUN cd ruby-2.1.2 && ./configure
-RUN cd ruby-2.1.2 && make
-RUN cd ruby-2.1.2 && make install
-RUN wget http://production.cf.rubygems.org/rubygems/rubygems-2.3.0.tgz
-RUN tar -xzf rubygems-2.3.0.tgz
-RUN cd rubygems-2.3.0 && ruby setup.rb
-RUN gem install jekyll
-RUN gem update --system
-RUN npm install -g bower
-RUN npm install -g grunt-cli
-RUN npm install -g jshint
-RUN gem install bundler
-RUN ln -s /data/.ssh /root/.ssh
+FROM michielbdejong/devbox
+RUN git clone https://github.com/litewrite/litewrite.git
+RUN git clone https://github.com/Laverna/laverna.git
+RUN git clone https://github.com/mc96107/mcnotes.git
+RUN git clone https://github.com/vcuculo/ghost.git
+RUN git clone https://github.com/silverbucket/dogfeed.git
+RUN git clone https://github.com/silverbucket/dogtalk.git
+RUN git clone https://github.com/skddc/sharesome.git
+RUN git clone https://github.com/xMartin/grouptabs.git
+RUN git clone https://github.com/diafygi/byoDB.git
+RUN git clone https://github.com/nilclass/remotestorage-browser-example.git
+RUN git clone https://github.com/shybyte/unhosted-time-tracker.git
+RUN git clone https://github.com/nilclass/svg-edit.git
+RUN git clone https://github.com/silverbucket/vidmarks.git
+RUN git clone https://github.com/michielbdejong/html-music-player.git
+RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
+RUN git clone https://github.com/michielbdejong/todomvc.git
+RUN git clone https://github.com/nilclass/dspace-client.git
+RUN git clone https://github.com/tantaman/strut.git
+RUN git clone https://github.com/michielbdejong/meute.git
+RUN git clone https://github.com/michielbdejong/export.5apps.com.git
+RUN git clone https://github.com/michielbdejong/import.5apps.com.git
+RUN git clone https://github.com/unhosted/store.git
+RUN cd litewrite ; git remote add 5apps git@5apps.com:michiel_litewrite.git
+RUN #cd laverna ; git remote add 5apps git@5apps.com/Laverna/laverna.git
+RUN #cd mcnotes ; git remote add 5apps git@5apps.com/mc96107/mcnotes.git
+RUN cd ghost ; git remote add 5apps git@5apps.com:michiel_ghost.git
+RUN cd dogfeed ; git remote add 5apps git@5apps.com:michiel_dogfeed.git
+RUN cd dogtalk ; git remote add 5apps git@5apps.com:michiel_dogtalk.git
+RUN #cd  ; git remote add 5apps git@5apps.com/skddc/sharesome.git
+RUN cd grouptabs ; git remote add 5apps git@5apps.com:michiel_grouptabs.git
+RUN #cd  ; git remote add 5apps git@5apps.com/diafygi/byoDB.git
+RUN cd remotestorage-browser-example ; git remote add 5apps git@5apps.com:michiel_browser-michiel.git
+RUN cd unhosted-time-tracker ; git remote add 5apps git@5apps.com:michiel_unhosted-time-tracker.git
+RUN cd svg-edit ; git remote add 5apps git@5apps.com:michiel_svg-edit.git
+RUN cd vidmarks ; git remote add 5apps git@5apps.com:michiel_vidmarks.git
+RUN cd html-music-player ; git remote add 5apps git@5apps.com:michiel_music.git
+RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
+RUN cd todomvc ; git remote add 5apps git@5apps.com:michiel_todomvc.git
+RUN cd dspace-client ; git remote add 5apps git@5apps.com:michiel_dspace-client-michiel.git
+RUN #cd  ; git remote add 5apps git@5apps.com/tantaman/strut.git
+RUN cd meute ; git remote add 5apps git@5apps.com:michiel_august.git
+RUN cd export.5apps.com ; git remote add 5apps git@5apps.com:michiel_export.git
+RUN cd import.5apps.com ; git remote add 5apps git@5apps.com:michiel_import.git
+RUN cd store ; git remote add 5apps git@5apps.com:michiel_store.git
