@@ -28,7 +28,7 @@ RUN cd ghost ; git remote add 5apps git@5apps.com:michiel_ghost-michiel.git
 RUN cp remotestorage-nocache.js ghost/vendor/
 
 # build ghost
-RUN cd ghost && git commit -am"build"
+RUN # cd ghost && git commit -am"build"
 
 # prepare dogfeed
 RUN git clone https://github.com/apptorrent/dogfeed.git
@@ -38,18 +38,18 @@ RUN cp remotestorage.min.js dogfeed/vendor/remotestorage/
 # build dogfeed
 RUN cd dogfeed && npm install
 RUN cd dogfeed && grunt
-RUN cd dogfeed && git commit -am"build"
+RUN # cd dogfeed && git commit -am"build"
 
 # prepare dogtalk
 RUN git clone https://github.com/apptorrent/dogtalk.git
-RUN cd dogtalk ; git remote add 5apps git@5apps.com:michiel_dogtalk.git
+RUN cd dogtalk ; git remote add 5apps git@5apps.com:michiel_dogtalk-michiel.git
 RUN cp remotestorage.min.js dogtalk/vendor/remotestorage/
 
 # build dogtalk
 RUN cd dogtalk && npm install
 RUN cd dogtalk && grunt
 RUN cd dogtalk && git add build/
-RUN cd dogtalk && git commit -am"build"
+RUN # cd dogtalk && git commit -am"build"
 
 #RUN git clone https://github.com/skddc/sharesome.git
 #RUN git clone https://github.com/xMartin/grouptabs.git
