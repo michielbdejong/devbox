@@ -1,8 +1,8 @@
 FROM michielbdejong/devbox
 #add remotestorage.js versions:
 ADD remotestorage.js remotestorage.js
-ADD remotestorage.min.js remotestorage.min.js
 ADD remotestorage-nocache.js remotestorage-nocache.js
+ADD remotestorage.min.js remotestorage.min.js
 
 #prepare litewrite
 RUN git clone https://github.com/apptorrent/litewrite.git
@@ -15,28 +15,41 @@ RUN cd litewrite && mkdir public/
 RUN cd litewrite && mv index.html public/
 RUN cd litewrite && mv litewrite.js public/
 RUN cd litewrite && git checkout -- .
-RUN cd litewrite && git branch master
-RUN cd litewrite && git checkout master
-RUN cd litewrite && rm -r src/*
-RUN cd litewrite && rm -r lib/*
+RUN cd litewrite && git checkout origin/master -b master
+#RUN cd litewrite && rm -r src/*
+#RUN cd litewrite && rm -r lib/*
 RUN cd litewrite && mv public/* .
 RUN cd litewrite && rmdir public
 RUN cd litewrite && git commit -am"build"
 
 # prepare ghost
 RUN git clone https://github.com/apptorrent/ghost.git
-RUN cd ghost ; git remote add 5apps git@5apps.com:michiel_ghost.git
+RUN cd ghost ; git remote add 5apps git@5apps.com:michiel_ghost-michiel.git
 RUN cp remotestorage-nocache.js ghost/vendor/
+
+# build ghost
+RUN cd ghost && git commit -am"build"
 
 # prepare dogfeed
 RUN git clone https://github.com/apptorrent/dogfeed.git
-RUN cd dogfeed ; git remote add 5apps git@5apps.com:michiel_dogfeed.git
+RUN cd dogfeed ; git remote add 5apps git@5apps.com:michiel_dogfeed-michiel.git
 RUN cp remotestorage.min.js dogfeed/vendor/remotestorage/
+
+# build dogfeed
+RUN cd dogfeed && npm install
+RUN cd dogfeed && grunt
+RUN cd dogfeed && git commit -am"build"
 
 # prepare dogtalk
 RUN git clone https://github.com/apptorrent/dogtalk.git
 RUN cd dogtalk ; git remote add 5apps git@5apps.com:michiel_dogtalk.git
 RUN cp remotestorage.min.js dogtalk/vendor/remotestorage/
+
+# build dogtalk
+RUN cd dogtalk && npm install
+RUN cd dogtalk && grunt
+RUN cd dogtalk && git add build/
+RUN cd dogtalk && git commit -am"build"
 
 #RUN git clone https://github.com/skddc/sharesome.git
 #RUN git clone https://github.com/xMartin/grouptabs.git
