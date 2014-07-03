@@ -52,16 +52,20 @@ RUN cd dogtalk && git add build/
 RUN # cd dogtalk && git commit -am"build"
 
 # prepare sharesome
-RUN echo 1
+RUN echo 2
 RUN git clone https://github.com/apptorrent/sharesome.git
 RUN cd sharesome ; git remote add 5apps git@5apps.com:michiel_sharesome-michiel.git
-RUN cp remotestorage-nocache.js sharesome/vendor/remotestorage/
+#RUN cp remotestorage-nocache.js sharesome/vendor/remotestorage/
 
 # build sharesome
 RUN cd sharesome ; bundle install
 RUN cd sharesome ; npm install
 RUN cd sharesome ; bower install --allow-root --yes
-RUN cd sharesome ; grunt build:dist --force
+RUN cd sharesome ; grunt dist --force
+RUN cd sharesome ; grunt buildcontrol:production --force
+RUN cd sharesome/dist ; git remote add 5apps git@5apps.com:michiel_sharesome-michiel.git
+RUN cd sharesome/dist ; git add *
+RUN cd sharesome/dist ; git commit -am"build"
 
 #
 #
