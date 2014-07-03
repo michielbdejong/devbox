@@ -51,65 +51,84 @@ RUN cd dogtalk && grunt
 RUN cd dogtalk && git add build/
 RUN # cd dogtalk && git commit -am"build"
 
-#RUN git clone https://github.com/skddc/sharesome.git
+# prepare sharesome
+RUN git clone https://github.com/apptorrent/sharesome.git
+RUN cd sharesome ; git remote add 5apps git@5apps.com:michiel_sharesome-michiel.git
+RUN cp remotestorage-nocache.js sharesome/vendor/remotestorage/
+
+
+
+#
+#
+#
+#
+#
+#
+#
+## prepare grouptabs
 #RUN git clone https://github.com/xMartin/grouptabs.git
-#RUN git clone https://github.com/diafygi/byoDB.git
-#RUN git clone https://github.com/nilclass/remotestorage-browser-example.git
-#RUN git clone https://github.com/shybyte/unhosted-time-tracker.git
-#RUN git clone https://github.com/nilclass/svg-edit.git
-#RUN git clone https://github.com/silverbucket/vidmarks.git
-#RUN git clone https://github.com/michielbdejong/html-music-player.git
-#RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
-#RUN git clone https://github.com/michielbdejong/todomvc.git
-#RUN git clone https://github.com/nilclass/dspace-client.git
-#RUN git clone https://github.com/tantaman/strut.git
-#RUN git clone https://github.com/michielbdejong/meute.git
-#RUN git clone https://github.com/michielbdejong/export.5apps.com.git
-#RUN git clone https://github.com/michielbdejong/import.5apps.com.git
-#RUN git clone https://github.com/unhosted/store.git
-#
-#RUN #cd laverna ; git remote add 5apps git@5apps.com/Laverna/laverna.git
-#RUN #cd mcnotes ; git remote add 5apps git@5apps.com/mc96107/mcnotes.git
-#RUN #cd  ; git remote add 5apps git@5apps.com/skddc/sharesome.git
 #RUN cd grouptabs ; git remote add 5apps git@5apps.com:michiel_grouptabs.git
-#RUN #cd  ; git remote add 5apps git@5apps.com/diafygi/byoDB.git
+#
+## prepare browser
+#RUN git clone https://github.com/nilclass/remotestorage-browser-example.git
 #RUN cd remotestorage-browser-example ; git remote add 5apps git@5apps.com:michiel_browser-michiel.git
-#RUN cd unhosted-time-tracker ; git remote add 5apps git@5apps.com:michiel_unhosted-time-tracker.git
-#RUN cd svg-edit ; git remote add 5apps git@5apps.com:michiel_svg-edit.git
-#RUN cd vidmarks ; git remote add 5apps git@5apps.com:michiel_vidmarks.git
-#RUN cd html-music-player ; git remote add 5apps git@5apps.com:michiel_music.git
-#RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
-#RUN cd todomvc ; git remote add 5apps git@5apps.com:michiel_todomvc.git
-#RUN cd dspace-client ; git remote add 5apps git@5apps.com:michiel_dspace-client-michiel.git
-#RUN #cd  ; git remote add 5apps git@5apps.com/tantaman/strut.git
-#RUN cd meute ; git remote add 5apps git@5apps.com:michiel_august.git
-#RUN cd export.5apps.com ; git remote add 5apps git@5apps.com:michiel_export.git
-#RUN cd import.5apps.com ; git remote add 5apps git@5apps.com:michiel_import.git
-#RUN cd store ; git remote add 5apps git@5apps.com:michiel_store.git
-#
-#RUN npm install -g grunt-cli
-#RUN cd litewrite ; npm install
-#
-#RUN wget http://remotestorage.io/release/0.10.0/remotestorage.js
-#RUN wget http://remotestorage.io/release/0.10.0/remotestorage.min.js
-#RUN wget http://remotestorage.io/release/0.10.0/remotestorage-nocache.js
-#
-#RUN cp remotestorage.js litewrite/lib/
-#RUN cp remotestorage-nocache.js ghost/vendor/
-#RUN cp remotestorage.min.js dogfeed/vendor/remotestorage/
-#RUN cp remotestorage.min.js dogtalk/vendor/remotestorage/
-#RUN cp remotestorage-nocache.js sharesome/vendor/remotestorage/
 #RUN cp remotestorage.js remotestorage-browser-example/lib/
-#RUN cp remotestorage.js unhosted-time-tracker/libs/remote-storage/remoteStorage-debug.js
-#RUN cp remotestorage.min.js svg-edit/editor/extensions/ext-remotestorage/
-#RUN cp remotestorage.js vidmarks/vendor/remoteStorage.js
-#RUN cp remotestorage.js html-music-player/ext/js/
-#RUN cp remotestorage.js myfavoritedrinks/
-#RUN cp remotestorage.js todomvc/labs/architecture-examples/remotestorage/js/
-#RUN cp remotestorage.js dspace-client/deps/remoteStorage.js
-#RUN cp remotestorage.js meute/upstream/
-#RUN cp remotestorage.js import.5apps.com/vendor/
-#RUN cp remotestorage.js export.5apps.com/vendor/
-#RUN cp remotestorage.js store/
 #
-#RUN cd litewrite ; grunt build
+## prepare time tracker
+#RUN git clone https://github.com/shybyte/unhosted-time-tracker.git
+#RUN cd unhosted-time-tracker ; git remote add 5apps git@5apps.com:michiel_unhosted-time-tracker.git
+#RUN cp remotestorage.js unhosted-time-tracker/libs/remote-storage/remoteStorage-debug.js
+#
+## prepare svg-edit
+#RUN git clone https://github.com/nilclass/svg-edit.git
+#RUN cd svg-edit ; git remote add 5apps git@5apps.com:michiel_svg-edit.git
+#RUN cp remotestorage.min.js svg-edit/editor/extensions/ext-remotestorage/
+#
+## prepare vidmarks
+#RUN git clone https://github.com/silverbucket/vidmarks.git
+#RUN cd vidmarks ; git remote add 5apps git@5apps.com:michiel_vidmarks.git
+#RUN cp remotestorage.js vidmarks/vendor/remoteStorage.js
+#
+## prepare music player
+#RUN git clone https://github.com/michielbdejong/html-music-player.git
+#RUN cd html-music-player ; git remote add 5apps git@5apps.com:michiel_music.git
+#RUN cp remotestorage.js html-music-player/ext/js/
+#
+## prepare myfavoritedrinks
+#RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
+#RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
+#RUN cp remotestorage.js myfavoritedrinks/
+
+## prepare todomvc
+#RUN git clone https://github.com/michielbdejong/todomvc.git
+#RUN cd todomvc ; git remote add 5apps git@5apps.com:michiel_todomvc.git
+#RUN cp remotestorage.js todomvc/labs/architecture-examples/remotestorage/js/
+
+## prepare dspace-client
+#RUN git clone https://github.com/nilclass/dspace-client.git
+#RUN cd dspace-client ; git remote add 5apps git@5apps.com:michiel_dspace-client-michiel.git
+#RUN cp remotestorage.js dspace-client/deps/remoteStorage.js
+
+## prepare strut
+#RUN git clone https://github.com/tantaman/strut.git
+#RUN #cd  ; git remote add 5apps git@5apps.com/tantaman/strut.git
+
+## prepare meute
+#RUN git clone https://github.com/michielbdejong/meute.git
+#RUN cd meute ; git remote add 5apps git@5apps.com:michiel_august.git
+#RUN cp remotestorage.js meute/upstream/
+
+## prepare export
+#RUN git clone https://github.com/michielbdejong/export.5apps.com.git
+#RUN cd export.5apps.com ; git remote add 5apps git@5apps.com:michiel_export.git
+#RUN cp remotestorage.js import.5apps.com/vendor/
+
+## prepare import
+#RUN git clone https://github.com/michielbdejong/import.5apps.com.git
+#RUN cd import.5apps.com ; git remote add 5apps git@5apps.com:michiel_import.git
+#RUN cp remotestorage.js export.5apps.com/vendor/
+
+## prepare store
+#RUN git clone https://github.com/unhosted/store.git
+#RUN cd store ; git remote add 5apps git@5apps.com:michiel_store.git
+#RUN cp remotestorage.js store/
