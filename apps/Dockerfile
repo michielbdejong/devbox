@@ -67,6 +67,56 @@ RUN cd sharesome/dist ; git remote add 5apps git@5apps.com:michiel_sharesome-mic
 RUN cd sharesome/dist ; git add *
 RUN cd sharesome/dist ; git commit -am"build"
 
+# prepare music player
+RUN git clone https://github.com/michielbdejong/html-music-player.git
+RUN cd html-music-player ; git remote add 5apps git@5apps.com:michiel_music.git
+RUN cp remotestorage.js html-music-player/ext/js/
+
+# prepare myfavoritedrinks
+RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
+RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
+RUN cp remotestorage.js myfavoritedrinks/
+
+# prepare todomvc
+RUN git clone https://github.com/michielbdejong/todomvc.git
+RUN cd todomvc ; git remote add 5apps git@5apps.com:michiel_todomvc.git
+RUN cp remotestorage.js todomvc/labs/architecture-examples/remotestorage/js/
+
+# prepare meute
+RUN git clone https://github.com/michielbdejong/meute.git
+RUN cd meute ; git remote add 5apps git@5apps.com:michiel_august.git
+RUN cp remotestorage.js meute/upstream/
+
+# prepare export
+RUN git clone https://github.com/michielbdejong/export.5apps.com.git
+RUN cd export.5apps.com ; git remote add 5apps git@5apps.com:michiel_export.git
+RUN cp remotestorage.js export.5apps.com/vendor/
+
+# prepare import
+RUN git clone https://github.com/michielbdejong/import.5apps.com.git
+RUN cd import.5apps.com ; git remote add 5apps git@5apps.com:michiel_import.git
+RUN cp remotestorage.js import.5apps.com/vendor/
+
+# prepare store
+RUN git clone https://github.com/unhosted/store.git
+RUN cd store ; git remote add 5apps git@5apps.com:michiel_store.git
+RUN cp remotestorage.js store/
+
+# set up starter-kit
+RUN git clone https://github.com/remotestorage/starter-kit.git
+RUN cd starter-kit && npm install
+RUN ln -s litewrite starter-kit/apps/litewrite
+RUN ln -s ghost starter-kit/apps/ghost
+RUN ln -s dogfeed starter-kit/apps/dogfeed
+RUN ln -s dogtalk starter-kit/apps/dogtalk
+RUN ln -s sharesome starter-kit/apps/sharesome
+RUN ln -s html-music-player starter-kit/apps/html-music-player
+RUN ln -s myfavoritedrinks starter-kit/apps/myfavoritedrinks
+RUN ln -s todomvc starter-kit/apps/todomvc
+RUN ln -s meute starter-kit/apps/meute
+RUN ln -s export.5apps.com starter-kit/apps/export.5apps.com
+RUN ln -s import.5apps.com starter-kit/apps/import.5apps.com
+
 #
 #
 #
@@ -98,20 +148,6 @@ RUN cd sharesome/dist ; git commit -am"build"
 #RUN cd vidmarks ; git remote add 5apps git@5apps.com:michiel_vidmarks.git
 #RUN cp remotestorage.js vidmarks/vendor/remoteStorage.js
 #
-## prepare music player
-#RUN git clone https://github.com/michielbdejong/html-music-player.git
-#RUN cd html-music-player ; git remote add 5apps git@5apps.com:michiel_music.git
-#RUN cp remotestorage.js html-music-player/ext/js/
-#
-## prepare myfavoritedrinks
-#RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
-#RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
-#RUN cp remotestorage.js myfavoritedrinks/
-
-## prepare todomvc
-#RUN git clone https://github.com/michielbdejong/todomvc.git
-#RUN cd todomvc ; git remote add 5apps git@5apps.com:michiel_todomvc.git
-#RUN cp remotestorage.js todomvc/labs/architecture-examples/remotestorage/js/
 
 ## prepare dspace-client
 #RUN git clone https://github.com/nilclass/dspace-client.git
@@ -121,23 +157,3 @@ RUN cd sharesome/dist ; git commit -am"build"
 ## prepare strut
 #RUN git clone https://github.com/tantaman/strut.git
 #RUN #cd  ; git remote add 5apps git@5apps.com/tantaman/strut.git
-
-## prepare meute
-#RUN git clone https://github.com/michielbdejong/meute.git
-#RUN cd meute ; git remote add 5apps git@5apps.com:michiel_august.git
-#RUN cp remotestorage.js meute/upstream/
-
-## prepare export
-#RUN git clone https://github.com/michielbdejong/export.5apps.com.git
-#RUN cd export.5apps.com ; git remote add 5apps git@5apps.com:michiel_export.git
-#RUN cp remotestorage.js import.5apps.com/vendor/
-
-## prepare import
-#RUN git clone https://github.com/michielbdejong/import.5apps.com.git
-#RUN cd import.5apps.com ; git remote add 5apps git@5apps.com:michiel_import.git
-#RUN cp remotestorage.js export.5apps.com/vendor/
-
-## prepare store
-#RUN git clone https://github.com/unhosted/store.git
-#RUN cd store ; git remote add 5apps git@5apps.com:michiel_store.git
-#RUN cp remotestorage.js store/
