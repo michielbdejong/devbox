@@ -4,6 +4,30 @@ ADD remotestorage.js remotestorage.js
 ADD remotestorage-nocache.js remotestorage-nocache.js
 ADD remotestorage.min.js remotestorage.min.js
 
+# inventory:
+# On 0.10.0, LGTM:
+# https://music-michiel.5apps.com/ext/js/remotestorage.js
+# https://myfavoritedrinks.5apps.com/remotestorage.js
+# https://todomvc.5apps.com/labs/architecture-examples/remotestorage/js/remotestorage.js
+# https://meute.5apps.com/upstream/remotestorage.js
+# https://export.5apps.com/vendor/remotestorage.js
+# https://import.5apps.com/vendor/remotestorage.js
+# https://unhosted-store.5apps.com/remotestorage.js
+#
+# Filed issues:
+# https://github.com/vcuculo/ghost/issues/15
+# https://github.com/vcuculo/ghost/pull/16
+# https://github.com/remotestorage/modules/issues/61
+#
+# Build problem:
+# litewrite
+# https://dogfeed-michiel.5apps.com/vendor/remotestorage/remotestorage.min.js
+# https://dogtalk-michiel.5apps.com/vendor/remotestorage/remotestorage.min.js
+# https://sharesome-michiel.5apps.com/vendor/remotestorage/remotestorage-nocache.js
+#
+# Yet to test:
+# grouptabs, browser, time tracker, svg-edit, vidmarks, dspace-client, strut
+ 
 #prepare litewrite
 RUN git clone https://github.com/apptorrent/litewrite.git
 RUN cd litewrite ; git remote add 5apps git@5apps.com:michiel_litewrite.git
@@ -74,7 +98,7 @@ RUN cp remotestorage.js html-music-player/ext/js/
 
 # prepare myfavoritedrinks
 RUN git clone https://github.com/remotestorage/myfavoritedrinks.git
-RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_myfavoritedrinks.git
+RUN cd myfavoritedrinks ; git remote add 5apps git@5apps.com:xmartin_my-favorite-drinks.git
 RUN cp remotestorage.js myfavoritedrinks/
 
 # prepare todomvc
@@ -117,7 +141,6 @@ RUN ln -s meute starter-kit/apps/meute
 RUN ln -s export.5apps.com starter-kit/apps/export.5apps.com
 RUN ln -s import.5apps.com starter-kit/apps/import.5apps.com
 
-#
 #
 #
 #
