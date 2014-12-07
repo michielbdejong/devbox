@@ -38,3 +38,6 @@ RUN npm install -g grunt-cli
 RUN npm install -g jshint
 RUN gem install bundler
 RUN ln -s /data/.ssh /root/.ssh
+
+#additions for phantomjs:
+RUN apt-get install -y libfreetype6 libfontconfig
